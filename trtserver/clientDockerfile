@@ -1,1 +1,5 @@
-From  nvcr.io/nvidia/tensorrtserver:19.12-py3-clientsdk
+From  nvcr.io/nvidia/tensorrtserver:19.07-py3-clientsdk
+COPY ./sources.list  /etc/apt/sources.list 
+RUN apt-get update -y && apt-get install vim -y
+RUN python3 -m pip uninstall pip -y && apt install python3-pip --reinstall
+RUN pip3 install tensorflow==1.14.0 -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com  && rm -rf ~/.cache
